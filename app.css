@@ -1,17 +1,43 @@
 /*
     Global ans specific app styles
+
+
 */
 
-:root {
-    --primary-color-1: #2196F3;
-    --primary-color-2: #FF9800;
-    --secondary-color-1: #4CAF50;
-    --secondary-color-2: #E91E63;
+
+body {
     --background-color: #121212;
     --text-color-1: #ffffff;
     --text-color-2: #bbbbbb;
 }
 
+body.light {
+    --background-color: #e4e4e4;
+    --text-color-1: #000;
+    --text-color-2: #555;
+}
+
+body,
+body.blue {
+    --primary-color-1: #2196F3;
+    --primary-color-2: #FF9800;
+    --secondary-color-1: #4CAF50;
+    --secondary-color-2: #E91E63;
+}
+
+body.orange {
+    --primary-color-1: #FF5722;
+    --primary-color-2: #03A9F4;
+    --secondary-color-1: #CDDC39;
+    --secondary-color-2: #9C27B0;
+}
+
+body.green {
+    --primary-color-1: #7CB342;
+    --primary-color-2: #9C27B0;
+    --secondary-color-1: #FFA000;
+    --secondary-color-2: #E040FB;
+}
 
 * {
     margin: 0;
@@ -22,6 +48,10 @@
     font-family: Arial, Helvetica, sans-serif;
     color: inherit;
     background: inherit;
+}
+
+.debug {
+    border: 1px solid green;
 }
 
 body {
@@ -40,8 +70,6 @@ body {
 }
 
 .header #page-title {
-    display: flex;
-    flex-direction: column;
     color: var(--text-color-1);
     font-size: 2em;
     margin-bottom: 10px;
@@ -92,7 +120,9 @@ body {
     color: var(--text-color-2);
 }
 
-.main h1, .main h2, .main h3 {
+.main h1,
+.main h2,
+.main h3 {
     color: var(--text-color-1);
     padding-bottom: 5px;
 }

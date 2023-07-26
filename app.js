@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import importCSS from './utils.js';
-import { Button, Container, Link, ProgressBar, Page, PlaceRight } from './components.js';
+import { importCSS } from './utils.js';
+import { Button, Container, Link, ProgressBar, Page, PlaceRight, CheckBox } from './components.js';
 
 importCSS('app.css')
 
@@ -21,7 +21,7 @@ function App({ children }) {
 function Header({ page, pageHandler }) {
     return (
         <header className="header">
-            <h1 id="page-title"><span id="easteregg">Coffee</span></h1>
+            <h1 id="page-title"><span id="easteregg" className="">Coffee</span></h1>
             <Menu page={page} pageHandler={pageHandler}/>
         </header>
     )
@@ -62,7 +62,14 @@ function RandomProgress() {
 }
 
 function Main({ page }) {
-
+    const toggleLightMode = (light) => {
+        if (light) {
+            document.body.classList.add('light')
+        } else {
+            document.body.classList.remove('light')
+        }
+    }
+    
     return (
         <main className="main">
             <Page selected={page} name="home">
@@ -91,6 +98,13 @@ function Main({ page }) {
                         <Button type="negative"> Negative </Button>
                     </Container>
                 </Container>
+                <Container>
+                    <h2>Choose color</h2>
+                    <Button onClick={() => document.body.className="blue"}>🔵</Button>
+                    <Button onClick={() => document.body.className="orange"}>🟠</Button>
+                    <Button onClick={() => document.body.className="green"}>🟢</Button>
+                    <CheckBox onChange={(light) => toggleLightMode(light)} value={false}>Toggle light mode</CheckBox>
+                </Container>
             </Page>
             <Page selected={page} name="about">
                 <h2>About</h2>
@@ -104,13 +118,16 @@ function Main({ page }) {
                         It can make more sense for more complex cases. 
                     </p>
                     <Container>
-                        <input type="checkbox"/> <label>Option 1</label>
+                        <CheckBox value={false}>Enable optimization</CheckBox>
+                        <CheckBox value={false}>Enable debug mode</CheckBox>
+                        <CheckBox value={false}>Enable some thing</CheckBox>
                     </Container>
                     <Container>
-                        <input type="checkbox"/> <label>Option 2</label>
+                        <CheckBox value={false}>Toggle option</CheckBox>
+                        <CheckBox value={false}>Toggle another option</CheckBox>
                     </Container>
                     <Container>
-                        <input type="checkbox"/> <label>Option 3</label>
+                        <CheckBox value={false}>Check it</CheckBox>
                     </Container>
                     <PlaceRight>
                         <Button>Submit</Button>
