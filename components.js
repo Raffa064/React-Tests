@@ -47,6 +47,13 @@ export function PlaceRight({ className = '', children }) {
     )
 }
 
+export function PlaceCenter({ className = '', children }) {
+    className += ' component place-center'
+    return (
+        <div className={className}>{ children }</div>
+    )
+}
+
 export function CheckBox({ id = randomId(), className = '', value = false, onChange, children }) {
     className += 'component checkbox'
 

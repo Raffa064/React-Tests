@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { importCSS } from './utils.js';
-import { Button, Container, Link, ProgressBar, Page, PlaceRight, CheckBox } from './components.js';
+import { Button, Container, Link, ProgressBar, Page, PlaceRight, PlaceCenter, CheckBox } from './components.js';
 
 importCSS('app.css')
 
@@ -78,6 +78,16 @@ function Main({ page }) {
                 <p className="m10 p-left-10">This can be a normal or almost normal paraph.</p>
                 <Link>This is a link</Link>
                 <Container>
+                    <h2>Choose color</h2>
+                    <p>You can customize the page theme.</p>
+                    <PlaceCenter>
+                        <Button onClick={() => document.body.className="blue"}>🔵</Button>
+                        <Button onClick={() => document.body.className="orange"}>🟠</Button>
+                        <Button onClick={() => document.body.className="green"}>🟢</Button>
+                    </PlaceCenter>
+                    <CheckBox onChange={(light) => toggleLightMode(light)} value={false}>Toggle light mode</CheckBox>
+                </Container>
+                <Container>
                     <h3>I'm a container</h3>
                     <p>I'm a simple and cool paragraph made only for test layout.</p>
                     <Button className="fill-line" type="none">None</Button>
@@ -97,13 +107,6 @@ function Main({ page }) {
                         <RandomProgress/>
                         <Button type="negative"> Negative </Button>
                     </Container>
-                </Container>
-                <Container>
-                    <h2>Choose color</h2>
-                    <Button onClick={() => document.body.className="blue"}>🔵</Button>
-                    <Button onClick={() => document.body.className="orange"}>🟠</Button>
-                    <Button onClick={() => document.body.className="green"}>🟢</Button>
-                    <CheckBox onChange={(light) => toggleLightMode(light)} value={false}>Toggle light mode</CheckBox>
                 </Container>
             </Page>
             <Page selected={page} name="about">
